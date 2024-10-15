@@ -1,0 +1,30 @@
+{
+  "name": "FinLit",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Financial Literacy for Teenagers",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "live": "nodemon index.js"
+  },
+  "keywords": [
+    "Financial Literacy",
+    "literacy",
+    "financial",
+    "teens"
+  ],
+  "author": "abhay7dev",
+  "license": "ISC",
+  "private": true,
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-minify": "^1.0.0",
+    "express-rate-limit": "^7.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
