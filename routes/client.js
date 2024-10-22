@@ -64,7 +64,28 @@ router.use((_, res, next) => {
     next();
 });
 
-router.get("/", (_, res) => res.render("index"));
+router.get("/", async (_, res) => {
+
+    try {
+        const dir = await fs.readdir(pagesDir);
+        res.data.articles = [];
+        dir.forEach((val) => {
+            let valToAdd = changeCase.capitalCase(val);
+            let hrefCC = changeCase.snakeCase(val);
+            res.data.articles.push(`<a href="/article/${hrefCC.substring(0, hrefCC.length - 3)}">${valToAdd.substring(0, valToAdd.length - 3)}</a>`);
+        });
+        res.render("index");
+    } catch(error) {
+        router.use((_, res) => {
+            res.data.error = 500;
+            res.status(500).render("error");
+        });
+    } 
+
+});
+
+router.get("/contact", (_, res) => res.render("contact"));
+
 router.get("/article/:id", async (req, res) => {
     const art = changeCase.snakeCase(req.params.id);
     console.log(art);
@@ -78,7 +99,6 @@ router.get("/article/:id", async (req, res) => {
         
         res.data.content = toRet;
         res.data.title = changeCase.sentenceCase(art);
-        console.log(res.data.content);
         res.render("article");
     } catch (error) {
         router.use((_, res) => {

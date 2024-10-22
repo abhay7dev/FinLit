@@ -1,4 +1,14 @@
 <h1>Welcome to FinLit!</h1>
 
+<ul>
+<% data.articles.forEach((article) => { %>
+    <li><%- article %></li>
+<% });%>
+</ul>
+
+
+<link rel="stylesheet" href="/styles/index.css">
+
+
 <%- contentFor("title") %>
 FinLit
