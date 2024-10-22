@@ -4,9 +4,26 @@ const router = ExpressRouter();
 import layouts from "express-ejs-layouts";
 router.use(layouts);
 
-import { csp } from "../config.js"
+import { csp, root } from "../config.js"
 import ejsData from "../middleware/data.js";
 import rateLimit from "express-rate-limit";
+
+import * as changeCase from "change-case";
+
+import { join } from "path";
+
+const pagesDir = join(root, "pages");
+
+import fs from "fs/promises";
+
+import { marked } from "marked";
+import DOMPurify from "dompurify";
+
+marked.use({
+    async: true,
+    pedantic: false,
+    gfm: true,
+});
 
 router.use(rateLimit({
     windowMs: 1000 * 60,
@@ -48,5 +65,28 @@ router.use((_, res, next) => {
 });
 
 router.get("/", (_, res) => res.render("index"));
+router.get("/article/:id", async (req, res) => {
+    const art = changeCase.snakeCase(req.params.id);
+    console.log(art);
+    try {
+        await fs.access(join(pagesDir, art + ".md"));
+        console.log("accessed");
+        const data = "" + Buffer.from(await fs.readFile(join(pagesDir, art + ".md")));
+        console.log("read data");
+        const toRet = await marked.parse(data);
+        console.log("parsed");
+        
+        res.data.content = toRet;
+        res.data.title = changeCase.sentenceCase(art);
+        console.log(res.data.content);
+        res.render("article");
+    } catch (error) {
+        router.use((_, res) => {
+            res.data.error = 404;
+            res.status(404).render("error");
+        });
+    }
+
+});
 
 export default router;
