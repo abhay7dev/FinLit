@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node .",
-    "live": "nodemon index.js"
+    "dev": "npm run live",
+    "live": "NODE_ENV=development nodemon index.js"
   },
   "keywords": [
     "Financial Literacy",

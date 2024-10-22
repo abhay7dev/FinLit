@@ -22,7 +22,7 @@ router.use((_, res) => {
 app.listen(PORT, () => {
     console.log(
 		"Listening on %s\nStarting at %s pacific time\nRunning '%s' version",
-		NODE_ENV == "production" ? `port ${PORT}` : `http://localhost:${PORT}`,
+		`http://localhost:${PORT}`,
 		new Date().toLocaleString("en-US", {timeZone: SERVER_TIME_ZONE}),
 		NODE_ENV
 	);
