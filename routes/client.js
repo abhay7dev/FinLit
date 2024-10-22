@@ -31,7 +31,7 @@ router.use(rateLimit({
     standardHeaders: 'draft-7',
     legacyHeaders: false,
     handler: (req, res) => {
-        res.data.error = errors[429]
+        res.data.error = "429 Too Many Requests"
         res.render("error", {
             data: res.data
         });
