@@ -6,80 +6,113 @@
     --mg: #003566;
     --fg-light: #FFC300;
     --bg-lighest: #FFD60A;
+    --fg-text: ghostwhite;
 }
 
 /* Default */
 * {
     margin: 0;
     padding: 0;
-    font-family: "Quicksand" sans-serif !important;
+    font-family: "Quicksand";
     font-optical-sizing: auto;
     font-weight: 475;
     font-style: normal;
 }
 
+html, body {
+    background-color: var(--bg-darkest);
+    color: var(--fg-text);
+    scroll-behavior: smooth;
+}
 
-.navbar {
-    position: fixed;
-    background-color: #FFDB58;
-    list-style-type: none;
+
+nav {
+    background-color: var(--bg-dark);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 1px 10px 22px 10px rgba(255,195,0,0.11);
+    
+}
+
+.nav-logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--fg-text);
+}
+
+.nav-logo a {
+    color: var(--fg-text);
+    text-decoration: none;
+}
+
+.logo {
+    max-height: 4rem;
+}
+
+.main-menu {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
     margin: 0;
     padding: 0;
-    width: 100%;
 }
 
-ul.navbar {
-    top: 70px;
-    font-size: 30px;
-    height: 40px;
-    
-}
-
-div.navbar h1 {
-    margin-top: 20px;
-    top: 0px;
-    color: #80396a;
-}
-
-div.navbar {
-    top: 0px;
-    font-size: 20px;
-    height: 70px;
-    z-index:998;
-}
-
-img {
-    position: fixed;
-    margin:0;
-    top:-40px;
-    right: 0px;
-    z-index:999;
-}
-
-.navbar li {
-    margin: 20px;
+.main-menu li {
     display: inline;
-    
 }
 
-.navbar a {
-    padding-top: 30px;
+.main-menu a {
+    color: var(--fg-text);
     text-decoration: none;
-    color: #80396a;
+    font-size: 2rem;
 }
 
-.navbar a:hover {
-    color: white;
+.main-menu a:hover {
+    text-decoration: underline;
 }
 
-main {
-    margin-top: 8rem;
+.hamburger {
+    display: none;
+    font-size: 2.5rem;
+    background: none;
+    border: none;
+    color: var(--fg-text);
+    cursor: pointer;
 }
 
-body {
-    /*background-image: url(https://media.istockphoto.com/id/865577704/photo/blue-abstract-glass-texture-background-or-pattern-creative-design-template.webp?a=1&b=1&s=612x612&w=0&k=20&c=v3PXhIKED_UKW7dFyZudfS0KO5k68LZcHALIkmcg6ng=);*/
-    background-color: #6495ED;
-    background-size: cover;
-    color: white;
-    font-size: 20px;
+@media (max-width: 768px) {
+    .main-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: var(--bg-dark);
+        position: absolute;
+        top: 5rem;
+        left: 0;
+        padding: 1rem 0;
+    }
+
+    .main-menu.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-logo, .logo {
+        flex: 1;
+    }
+    .logo {
+        max-height: 4rem;
+        max-width: 4rem;
+        margin-right: 2rem;
+    }
+}
+
+.yel {
+    color: var(--fg-light);
 }

@@ -1,25 +1,95 @@
-h1, article {
-    width: 50%;
-    margin: auto;
-    margin-top: 5%;
-    width: 80%;
-    border-radius: 10px;
-    list-style-position: inside;
+#content {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6; 
+    max-width: 1400px; 
+    margin: 2rem auto; 
+    padding: 0 2rem;
 }
 
-h3 {
+#content h1, #content h2, #content h3 {
+    color: var(--bg-lighest);
+    margin-top: 2rem; 
+    margin-bottom: 10px;
+    line-height: 1.2; 
+}
+
+#content h1 {
+    font-size: 2.5em;
     font-weight: bold;
-    margin-bottom: 40px;
-    margin-top: 40px;
 }
 
-h1 {
+#content h2 {
+    font-size: 2em;
     font-weight: bold;
-    text-align: center;
-    margin-top: 150px;
-    margin-bottom: 40px;
 }
 
-main {
-    margin: 2rem;
+#content h3 {
+    font-size: 1.75em;
+    font-weight: bold;
+}
+
+#content p {
+    margin-bottom: 2rem;
+    color: var(--fg-text);
+}
+
+#content ul, #content ol {
+    margin: 2rem 0;
+    padding-left: 4rempx; 
+}
+
+#content ul li, #content ol li {
+    margin-bottom: 10px; 
+}
+
+#content ul li::marker, #content ol li::marker {
+    color: var(--mg); 
+}
+
+#content strong {
+    font-weight: bold;
+    color: var(--mg); 
+}
+
+#content em {
+    font-style: italic;
+}
+
+#content u {
+    text-decoration: underline;
+}
+
+#content a {
+    color: var(--bg-light);
+    text-decoration: none;
+}
+
+#content a:hover {
+    text-decoration: underline;
+}
+
+#content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px 0;
+}
+
+/* Add responsive styles */
+@media (max-width: 768px) {
+    #content {
+        padding: 0 0.5rem;
+    }
+
+    #content h1 {
+        font-size: 2em;
+    }
+
+    #content h2 {
+        font-size: 1.75em;
+    }
+
+    #content h3 {
+        font-size: 1.5em;
+    }
 }

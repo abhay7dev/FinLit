@@ -6,7 +6,6 @@ export const NODE_ENV = env.NODE_ENV || "production";
 export const PORT = env.PORT || 8080;
 export const SERVER_TIME_ZONE = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-
 // General
 export const url = env.SITE_URL || "http://localhost:" + PORT;
 export const year = new Date().getFullYear();

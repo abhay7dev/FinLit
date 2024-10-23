@@ -1,14 +1,21 @@
-<h1>Welcome to FinLit!</h1>
+<hgroup>
+    <h1>Welcome to <span class="yel">FinLit</span>!</h1>
+    <h3>Bringing financial literacy to the next generation!</h3>
+</hgroup>
 
-<ul>
-<% data.articles.forEach((article) => { %>
-    <li><%- article %></li>
-<% });%>
-</ul>
 
+<a class="scroll-down" href="#article-list"></a>
+
+<div id="article-list">
+    <h3>Articles:</h3>
+    <ul>
+        <% data.articles.forEach((article) => { %>
+            <li><%- article %></li>
+        <% });%>
+    </ul>
+</div>
 
 <link rel="stylesheet" href="/styles/index.css">
-
 
 <%- contentFor("title") %>
 FinLit

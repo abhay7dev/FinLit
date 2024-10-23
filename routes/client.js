@@ -12,12 +12,11 @@ import * as changeCase from "change-case";
 
 import { join } from "path";
 
-const pagesDir = join(root, "pages");
+const pagesDir = join(root, "articles");
 
 import fs from "fs/promises";
 
 import { marked } from "marked";
-import DOMPurify from "dompurify";
 
 marked.use({
     async: true,
@@ -88,23 +87,19 @@ router.get("/contact", (_, res) => res.render("contact"));
 
 router.get("/article/:id", async (req, res) => {
     const art = changeCase.snakeCase(req.params.id);
-    console.log(art);
+    
     try {
-        await fs.access(join(pagesDir, art + ".md"));
-        console.log("accessed");
+        const accessed = await fs.access(join(pagesDir, art + ".md"));
         const data = "" + Buffer.from(await fs.readFile(join(pagesDir, art + ".md")));
-        console.log("read data");
         const toRet = await marked.parse(data);
-        console.log("parsed");
         
-        res.data.content = toRet;
+        res.data.content = toRet; //DOMPurify.sanitize(toRet, { USE_PROFILES: { html: true }});
         res.data.title = changeCase.sentenceCase(art);
         res.render("article");
     } catch (error) {
-        router.use((_, res) => {
-            res.data.error = 404;
-            res.status(404).render("error");
-        });
+        console.log(error);
+        res.data.error = 404;
+        res.status(404).render("error");
     }
 
 });
