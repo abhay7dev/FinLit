@@ -3,7 +3,7 @@
 
 Created by: Abhay Bhat, Sameer Sahai, Noah Ojerio, Shravan Srinivas
 
-Available at https://github.com/abhay7dev/FinLit
+SEE CODE AT https://github.com/abhay7dev/FinLit
 
 ## To Run
 ```bash
